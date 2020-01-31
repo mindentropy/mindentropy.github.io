@@ -1,0 +1,12 @@
+---
+layout: post
+title: Hitting partition limit in Beaglebone black Linux kernel
+date: '2018-04-14T09:15:00.001+05:30'
+author: Gautam Bhat
+tags: 
+modified_time: '2018-04-14T09:15:25.096+05:30'
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-3079328318205244800
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2018/04/hitting-partition-limit-in-beaglebone.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: Verdana, sans-serif;">At work I was recently hit with the partition limit of 8 partitions. It was quite strange and debugging for hours with the kernel dmesg showing only 8 partitions being detected but lsblk and fdisk showing all the remaining partitions I was puzzled. Due the kernel not detecting more than 8 partitions udev would not create the device nodes for the undetected partitions. Narrowing down the problem to the kernel and wondering if it is a bug I did a google search for partition limit in beaglebone. It finally revealed the kernel config to be CONFIG_MMC_BLOCK_MINORS=8 which was limiting the partitions.</span><br /><span style="font-family: Verdana, sans-serif;"><br /></span><span style="font-family: Verdana, sans-serif;">Reference to the original thread: <a href="https://groups.google.com/d/msg/beagleboard/IJpym7xOFBA/Cb7JQNS_6KcJ">https://groups.google.com/d/msg/beagleboard/IJpym7xOFBA/Cb7JQNS_6KcJ</a></span><br /><span style="font-family: Verdana, sans-serif;"><br /></span><span style="font-family: Verdana, sans-serif;">Thanks to Robert C Nelson for helping with the problem and Ankur Tank for posting the problem in Google groups and Superuser.</span></div>

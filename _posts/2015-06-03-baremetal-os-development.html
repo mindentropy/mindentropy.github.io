@@ -1,0 +1,15 @@
+---
+layout: post
+title: Baremetal OS development
+date: '2015-06-03T00:55:00.003+05:30'
+author: Gautam Bhat
+tags:
+- mini2440
+- technology
+- baremetal_os
+modified_time: '2015-12-27T19:37:06.706+05:30'
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-8814454020435223117
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2015/06/baremetal-os-development.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">A year ago I had decided that I wanted to try writing a simple OS for my MINI2440 development board. The motivation was that this machine being quite powerful why waste cycles on running a full fledged OS like Linux.<br /><br />Also I wanted to know how far I can go trying to bring an ARM machine to life with just my baremetal code. Being so close to the metal had always fascinated me. I had written code for micro-controllers such as the MSP430 and the STM32F103ZE and had some experience in bringing up an MCU but never brought up an entire SoC.<br /><br />So the baremetal OS was born. I named it MDK (microcontroller development Kit) for developers and a kernel the MDK-OS. The idea was to have a development kit for the developers and also to have a small kernel.<br /><br />This brought me to my first commit here:<br /><br /><a href="https://github.com/mindentropy/s3c2440-mdk/commit/c4a9f316b4c8fd6f7984a1209b5cc473fdd3d13e">https://github.com/mindentropy/s3c2440-mdk/commit/c4a9f316b4c8fd6f7984a1209b5cc473fdd3d13e</a><br /><br /><br />Ah the joy of seeing the LED's blink. The initial commit featured a Makefile, a linker script an assembly file for the intial interrupt vector table and the main 'C' file which contained the code to blink the LED.<br /><br />What a joy it was to watch this simple code run.<br /><br />In this blog I will be explaining and writing my experiences in writing the OS and the development kit. Hope this will act as a learning kit for people who want to write their own OS.<br /><br /><br /><div style="text-align: center;"><i><b>Writing is nature’s way of showing us how sloppy our thinking is.</b></i></div><br /><br /></div>

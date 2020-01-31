@@ -1,0 +1,12 @@
+---
+layout: post
+title: Flex crash while building AOSP
+date: '2018-06-14T01:53:00.002+05:30'
+author: Gautam Bhat
+tags: 
+modified_time: '2018-06-14T02:05:28.933+05:30'
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-6390437620505551854
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2018/06/flex-crash-while-building-aosp.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: &quot;verdana&quot; , sans-serif;">I encountered a Flex crash while building AOSP. The crash as follows:</span><br /><span style="font-family: &quot;verdana&quot; , sans-serif;"><br /></span><span style="font-family: &quot;verdana&quot; , sans-serif;"><br /></span><span style="font-family: &quot;verdana&quot; , sans-serif;">[&nbsp; 1% 618/35534] Lex: aidl &lt;= system/tools/aidl/aidl_language_l.ll<br />FAILED: /bin/bash -c "prebuilts/misc/linux-x86/flex/flex-2.5.39 -oout/host/linux-x86/obj/STATIC_LIBRARIES/libaidl-common_intermediates/aidl_language_l.cpp system/tools/aidl/aidl_language_l.ll"<br />flex-2.5.39: loadlocale.c:130: _nl_intern_locale_data: Assertion `cnt &lt; (sizeof (_nl_value_type_LC_TIME) / sizeof (_nl_value_type_LC_TIME[0]))' failed.<br />Aborted (core dumped)</span><br /><span style="font-family: &quot;verdana&quot; , sans-serif;"><br /></span><span style="font-family: &quot;verdana&quot; , sans-serif;"><br /></span><span style="font-family: &quot;verdana&quot; , sans-serif;">Turns out this is because LC_ALL is set to nothing in my machine in Ubuntu 18.04. You can see this variable by typing "locale" in the command line. To fix this just do a:</span><br /><br /><span style="font-family: &quot;verdana&quot; , sans-serif;">export LC_ALL=C</span><br /><span style="font-family: &quot;verdana&quot; , sans-serif;"><br /></span><span style="font-family: &quot;verdana&quot; , sans-serif;"></span><br /><span style="font-family: &quot;verdana&quot; , sans-serif;">The solution reference is here: <a href="https://stackoverflow.com/questions/49301627/android-7-1-2-armv7">https://stackoverflow.com/questions/49301627/android-7-1-2-armv7</a></span><br /><span style="font-family: &quot;verdana&quot; , sans-serif;"><br /></span><span style="font-family: &quot;verdana&quot; , sans-serif;">&nbsp;</span></div>

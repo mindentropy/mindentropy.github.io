@@ -1,0 +1,12 @@
+---
+layout: post
+title: AM33xx sysboot settings
+date: '2018-04-29T11:15:00.002+05:30'
+author: Gautam Bhat
+tags: 
+modified_time: '2018-04-29T11:15:16.925+05:30'
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-149995333514309562
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2018/04/am33xx-sysboot-settings.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on"><span style="font-family: Verdana, sans-serif;">AM33xx document is not very clear on the sysboot settings. Recently when working on it I had some trouble finding out where in the document the SYSBOOT[15:0] pins correspond to the LCD_DATA[51:0] inputs. It is in page 5033 of spruh73p documentation in chapter 26.1.6 Booting, 26.1.6.2 Device list and sub chapter 26.1.6.2.1 SYSBOOT CONFIGURATION.</span><br /><br /><span style="font-family: Verdana, sans-serif;">To quote:</span><br /><br /><i>"SYSBOOT[15:0] terminals are respectively LCD_DATA[15:0] inputs, latched on the rising edge of PWRONRSTn."</i><br /><br /></div>

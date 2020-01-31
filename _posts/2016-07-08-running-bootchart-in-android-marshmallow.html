@@ -1,0 +1,13 @@
+---
+layout: post
+title: Running bootchart in Android Marshmallow
+date: '2016-07-08T00:20:00.001+05:30'
+author: Gautam Bhat
+tags: 
+modified_time: '2016-07-09T12:06:22.303+05:30'
+thumbnail: https://1.bp.blogspot.com/-zKEE6fNVoEY/V4Ca4goSThI/AAAAAAAAAD0/Nr0p5lTRNZ4rclmpPouIDaZ6LfcIWqILwCLcB/s72-c/bootchart.png
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-3202910756429372334
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2016/07/running-bootchart-in-android-marshmallow.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">For the Wandboard that I was customizing I wanted to know the process statistics, processor usage and IO usage to speed up my boot up time. I decided it was time to run bootchart.<br /><br />There is quite a bit of outdated Internet resources on how to use bootchart for Android. I decided to write one:<br /><br />First enable bootchart by doing a adb shell "echo 120 &gt; /data/bootchart/start". This would tell the init to start bootcharting for 2 minutes. After this you get a set of files in the /data/bootchart directory. The files are generally as follows:<br /><!-- HTML generated using hilite.me --><br /><div style="background: #ffffff; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0;">header<br />kernel_pacct<br />proc_diskstats.log<br />proc_ps.log<br />proc_stat.log<br /></pre></div><br /><br /><br />Next run the shell program grab-bootchart.sh in system/core/init which will use the measurement files above into a visual file either .png, .swf which shows the different processes hogging the CPU and which processes take a long time to init. Before we conclude a boot chart below of my wandboard custom build (Click for a larger image or download it to zoom in). <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-zKEE6fNVoEY/V4Ca4goSThI/AAAAAAAAAD0/Nr0p5lTRNZ4rclmpPouIDaZ6LfcIWqILwCLcB/s1600/bootchart.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="135" src="https://1.bp.blogspot.com/-zKEE6fNVoEY/V4Ca4goSThI/AAAAAAAAAD0/Nr0p5lTRNZ4rclmpPouIDaZ6LfcIWqILwCLcB/s400/bootchart.png" width="400" /></a></div><br /><br /><br /><br /><div class="_Tsf"><b><i>Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin.</i></b></div><div class="_Tsf"></div><div class="_Tsf" style="text-align: right;"><i><b>&nbsp;-Jon Von Neumann</b> </i></div></div>

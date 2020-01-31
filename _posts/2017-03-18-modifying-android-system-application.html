@@ -1,0 +1,13 @@
+---
+layout: post
+title: Customizing Android application settings and application startup behaviour
+  using overlays
+date: '2017-03-18T11:32:00.001+05:30'
+author: Gautam Bhat
+tags: 
+modified_time: '2017-03-18T11:37:19.229+05:30'
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-5836547825088708009
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2017/03/modifying-android-system-application.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">When developing an Android custom device for a particular market you would need to customize the system application settings and behaviour such as enabling NFC after boot up or disabling the lock screen for testing etc.<br /><br />For the above use case it is a bad practice to modify the settings or the code in the source tree of the application. The recommended way to change the settings is in something called the overlay. Overlay concept is similar to the ".rc" files present in Linux.<br /><br />For example to change the default settings in the SettingsProvider&nbsp; we have to change the settings in the defaults.xml. In the source tree of Android this package is present in frameworks/base/packages/SettingsProvider/res/values/defaults.xml<br /><br />In this file you can find a lot of default settings under the resources tag such as def_dim_screen or def_accelerometer_rotation which enables the rotation of the screen by default etc.<br /><br />To change a particular setting we have to create the similar folder structure in the overlays directory.<br />To do this we navigate to device/&lt;vendor&gt;/&lt;product&gt;/overlay. If there is no overlay directory create the directory.<br /><br />Next we create the folder tree structure similar to the package folder structure mentioned above. So the final structure will be<br />device/&lt;vendor&gt;/&lt;product&gt;/overlay/frameworks/base/packages/SettingsProvider/res/value/<br /><br />Next we create the defaults.xml file and copy only the needed settings inside the resources tag.<br /><br />What the above does is overrides the settings present in the defaults.xml file in the application directory with the settings present in the defaults.xml file in the overlays directory.<br /><br />Similarly we can create overlays for other applications or the frameworks. We can put the config.xml or the values.xml or even the wallpapers customized for the product.</div>

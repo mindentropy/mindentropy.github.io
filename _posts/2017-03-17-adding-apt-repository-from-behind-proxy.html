@@ -1,0 +1,12 @@
+---
+layout: post
+title: Adding an apt repository from behind a proxy
+date: '2017-03-17T00:38:00.001+05:30'
+author: Gautam Bhat
+tags: 
+modified_time: '2017-03-17T00:38:23.680+05:30'
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-5204421627594210358
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2017/03/adding-apt-repository-from-behind-proxy.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">Generally adding an apt repository from behind a proxy does not go well i.e. it ends with a "end of file". The reason being that the http_proxy and the https_proxy environment variables are not preserved in the sudo's environment.<br /><br />To fix this we need to edit the sudoers file to have the following lines:<br /><br /><!-- HTML generated using hilite.me --><br /><div style="background: #ffffff; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><table><tbody><tr><td><pre style="line-height: 125%; margin: 0;">1<br />2</pre></td><td><pre style="line-height: 125%; margin: 0;">Defaults env_keep+="http_proxy"<br />Defaults env_keep+="https_proxy"<br /></pre></td></tr></tbody></table></div><br />Please remember to separate the "Defaults" and "env_keep" with a tab.<br /><br />In this way the http_proxy and https_proxy will be preserved for the add-apt-repository to fetch the keys and the repo info.</div>

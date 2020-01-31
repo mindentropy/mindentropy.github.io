@@ -1,0 +1,12 @@
+---
+layout: post
+title: On eMMC boot partitions
+date: '2017-06-21T08:16:00.000+05:30'
+author: Gautam Bhat
+tags: 
+modified_time: '2017-06-21T08:16:22.393+05:30'
+blogger_id: tag:blogger.com,1999:blog-2655423030126048565.post-3114529719296673162
+blogger_orig_url: https://thesoulofamachine.blogspot.com/2017/06/on-emmc-boot-partitions.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">In the eMMC usually you would find boot partitions which are called high-speed boot according to the Micron. These are physical partitions where you can keep your bootloader and have a physical write protect provided by the chip. This is one of the ways you can lock down the bootloader.<br /><br />If you have booted Linux kernel you would find the information of the partitions in the /dev/mmcblkXbootN so for eg in my beaglebone black I have the eMMC at /dev/mmcblk1 and the two partitions at /dev/mmcblk1boot0 and /dev/mmcblk1boot1.<br /><br />The write protect information of these partitions is present in the file /sys/block/mmcblk1boot0/force_ro. To remove the write protect one can simply do a<br /><br />echo 0 &gt; /sys/block/mmclbk1boot0/force_ro<br /><br />We can then create partition information using fdisk and also create a file system using ext2fs.<br /><br /><br /></div>
